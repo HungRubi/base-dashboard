@@ -31,6 +31,18 @@ Skill này giúp agent xử lý nhanh các tác vụ thường gặp trong app d
 - Chỉ thêm comment ở đoạn có nghiệp vụ, điều kiện rẽ nhánh phức tạp, hoặc xử lý side effect.
 - Comment ngắn 1-2 câu, ưu tiên giải thích "vì sao" thay vì "đang làm gì".
 
+## Quy ước tổ chức component
+
+- Component dùng chung cho nhiều page hoặc toàn project: đặt trong `src/components`.
+- Component chỉ phục vụ một page cụ thể: tạo folder con trong page đó để quản lý local.
+- Tránh để component local trong `src/components` nếu không có nhu cầu tái sử dụng.
+
+## Quy ước UI theme
+
+- Khi làm UI, luôn triển khai đủ 3 chế độ: `dark`, `light`, `system`.
+- Nếu đã có bộ chọn theme, đảm bảo lưu lựa chọn vào localStorage và apply lại khi tải trang.
+- Ưu tiên token màu của Medusa UI, tránh hard-code màu làm lệch dark mode.
+
 ## Chuẩn docs
 
 Khi user yêu cầu tài liệu:

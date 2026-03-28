@@ -19,11 +19,28 @@ Tài liệu này định nghĩa cách AI agent nên làm việc trong repository
 
 - Dùng TypeScript rõ kiểu cho props, state, dữ liệu bảng.
 - Component cần tách logic hiển thị và logic dữ liệu khi bắt đầu phình to.
+- Nếu component dùng chung cho nhiều page/toàn project thì đặt trong `src/components`.
+- Nếu component chỉ dùng cho một page thì tạo folder con ngay trong page đó để cô lập phạm vi.
 - Tránh magic string; ưu tiên constant hoặc enum nội bộ module.
 - Giữ tên file, component, và export nhất quán.
 - Comment ngắn để mô tả chức năng của khối lệnh quan trọng hoặc khó đọc.
 - Không comment hiển nhiên; chỉ comment khi giúp người đọc hiểu "vì sao" hoặc luồng xử lý.
 - Ưu tiên comment theo khối trước đoạn logic (thay vì comment từng dòng).
+
+## Quy ước UI/UX (Medusa Admin)
+
+- Bám ngôn ngữ thiết kế Medusa Admin đã public: bố cục rõ ràng, spacing thoáng, màu trung tính.
+- Sidebar trái cố định, vùng content tách biệt, header gọn và ưu tiên ngữ cảnh trang.
+- Trạng thái active/hover của navigation cần rõ ràng, tối ưu khả năng quét nhanh.
+- Ưu tiên component đơn giản, tái sử dụng, tránh hiệu ứng dư thừa làm nhiễu thao tác quản trị.
+- Với mọi màn hình UI mới, bắt buộc làm đủ 3 chế độ theme: `dark`, `light`, `system`.
+- Mọi màu sắc phải dùng token/class của Medusa UI để chuyển theme nhất quán.
+
+## Quy ước routing
+
+- Khai báo route tập trung tại `src/routes/routeMap.tsx`.
+- `Public` layout dùng `Outlet` để chia sẻ sidebar + header cho toàn bộ route con.
+- Route mặc định và fallback điều hướng về route đầu tiên trong `routeMap`.
 
 ## Quy ước docs
 

@@ -5,6 +5,33 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>base-dashboard</title>
+    <!-- Tránh FOUC: áp class dark trước khi React mount (logic trùng src/lib/dashboard-theme.ts). -->
+    <script>
+      (function () {
+        var KEY = 'dashboard-theme'
+        function initial() {
+          try {
+            var s = localStorage.getItem(KEY)
+            if (s === 'system' || s === 'sáng' || s === 'tối') return s
+            if (s === 'light' || s === 'sang') return 'sáng'
+            if (s === 'dark' || s === 'toi') return 'tối'
+            return 'sáng'
+          } catch (e) {
+            return 'sáng'
+          }
+        }
+        function apply(v) {
+          var r = document.documentElement
+          if (v === 'tối') r.classList.add('dark')
+          else if (v === 'sáng') r.classList.remove('dark')
+          else {
+            var d = window.matchMedia('(prefers-color-scheme: dark)').matches
+            r.classList.toggle('dark', d)
+          }
+        }
+        apply(initial())
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>

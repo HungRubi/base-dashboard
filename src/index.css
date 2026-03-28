@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-@import "tailwindcss";
+@import 'tailwindcss';
+
+/* Tailwind v4: variant dark: khi .dark nằm trên <html> (hoặc ancestor). */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @source "../node_modules/@medusajs/ui";
-@config "@medusajs/ui-preset";
+@config "../tailwind.config.cjs";
 
 @layer base {
 	* {
